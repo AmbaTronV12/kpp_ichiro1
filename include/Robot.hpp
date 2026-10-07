@@ -8,6 +8,7 @@ protected:
     Position pos;
 
 public:
+    // Constructor for the Robot class
     Robot(float startspeed, int startOrientation, Position startPos);
 
     virtual ~Robot() = default;

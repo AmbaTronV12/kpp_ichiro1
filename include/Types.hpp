@@ -6,7 +6,7 @@ struct Position {
 };
 
 enum class State { 
-    SEACRH_BALL,
+    SEARCH_BALL,
     APPORACH_BALL,
     ALIGN_TO_GOAL,
     KICK_BALL
