@@ -1,5 +1,7 @@
 #pragma once
 #include "Types.hpp"
+#include "Ball.hpp"
+#include "Field.hpp"
 
 class Robot {
 protected:
@@ -25,7 +27,7 @@ public:
 
     float calculateDistance(Position target) const;  //used to calculate distance between robot and target position
 
-    virtual void think() = 0; //pure virtual function to be implemented by derived classes
+    virtual void think(Ball& ball, const Field& field) = 0; //pure virtual function to be implemented by derived classes
 
     virtual void act();
 

@@ -27,7 +27,7 @@ void Ball::update() {
         pos.x += speed * std::cos(rad);
         pos.y += speed * std::sin(rad);
 
-        speed -= 0.1f; // Deceleration of 1 m/tick
+        speed -= 1.0f; // Deceleration of 1 m/tick
         if (speed < 0.0f) {
             speed = 0.0f; // Ensure speed doesn't go negative
         }

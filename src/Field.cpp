@@ -63,3 +63,6 @@ void Field::render() const {
     // Print bottom border line
     std::cout << "+" << std::string(cols, '-') << "+\n";
 }
+
+int Field::getCols() const { return cols; }
+int Field::getRows() const { return rows; }
