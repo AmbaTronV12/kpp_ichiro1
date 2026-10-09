@@ -9,24 +9,27 @@
 #endif
 
 Simulator::Simulator(Position strikerPos, int strikerOrient, Position ballPos, int maxTicks)
-    : striker(strikerPos, 0.5f, strikerOrient), ball(ballPos), currentTick(0), maxTicks(maxTicks) {}
+    : striker(strikerPos, strikerOrient, 0.5f), ball(ballPos), currentTick(0), maxTicks(maxTicks) {}
 
 void Simulator::renderFOV() {
     Position rPos = striker.getPosition();
     int rOrient = striker.getOrientation();
     float rad = rOrient * (M_PI / 180.0f);
+    float sinVal = std::round(std::sin(rad));
+    float cosVal = std::round(std::cos(rad));
 
     // Loop for @ display
     for (int step = 1; step <= 3; ++step) {
         float forwardDist = step * 0.5f;
+
 
         for (int side = -step; side <= step; ++side) {
             float sideDist = side * 0.5f;
 
             // Coordinate transformation based on the robot's direction (0, 90, 180, 270)
             Position fovPos;
-            fovPos.x = rPos.x + forwardDist * std::cos(rad) - sideDist * std::sin(rad);
-            fovPos.y = rPos.y + forwardDist * std::sin(rad) + sideDist * std::cos(rad);
+            fovPos.x = rPos.x + forwardDist * cosVal - sideDist * sinVal;
+            fovPos.y = rPos.y + forwardDist * sinVal + sideDist * cosVal;
 
             if (field.isInside(fovPos)) {
                 field.drawObject(fovPos, '@');
@@ -37,8 +40,16 @@ void Simulator::renderFOV() {
 
 bool Simulator::checkGoal() const {
     Position bPos = ball.getPosition();
+
+    // Has not crossed the goal line at X = 4.5m
+    if (bPos.x < 4.5f) return false;
+
+    // Calculate the Y-intercept on the line X = 4.5 m using the ball's trajectory
+    float rad = ball.getDirection() * (M_PI / 180.0f);
+    float distancePastGoal = bPos.x - 4.5f;
+    float yAtGoalLine = bPos.y - (distancePastGoal * std::tan(rad));
     // A goal is scored if the ball passes x = 4.5m within the vertical range of the goalposts (y = -1.25m to 1.25m)
-    return (bPos.x >= 4.5f && std::abs(bPos.y) <= 1.25f);
+    return (yAtGoalLine >= -1.25f && yAtGoalLine <= 1.25f);
 }
 
 void Simulator::run() {
@@ -67,9 +78,13 @@ void Simulator::run() {
             field.drawObject(striker.getPosition(), 'R'); 
             field.render();
 
+            auto fixZero = [](float val) {
+                return (std::abs(val) < 0.0001f) ? 0.0f : val;
+            };
+
             std::cout << "Tick: " << currentTick
-                  << " | Striker: (" << striker.getPosition().x << ", " << striker.getPosition().y << ")"
-                  << " | Ball: (" << ball.getPosition().x << ", " << ball.getPosition().y << ")\n";
+                  << " | Striker: (" << fixZero(striker.getPosition().x) << ", " << fixZero(striker.getPosition().y) << ")"
+                  << " | Ball: (" << fixZero(ball.getPosition().x) << ", " << fixZero(ball.getPosition().y) << ")\n";
             std::cout << "GOAL! STRIKER SCORED!\n\n";
             break;
         }

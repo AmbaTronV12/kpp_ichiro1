@@ -21,11 +21,13 @@ bool Field::isInside(Position pos) const {
 bool Field::posToGrid(Position pos, int& outRow, int& outCol) const {
     if(!isInside(pos)) return false;
 
-    outCol = static_cast<int>((pos.x + (width / 2.0f)) / 0.5f);
-    outRow = static_cast<int>(((height / 2.0f - pos.y) / 0.5f));
+    outCol = static_cast<int>(std::round(pos.x + (width / 2.0f)) / 0.5f);
+    outRow = static_cast<int>(std::round((height / 2.0f - pos.y) / 0.5f));
 
     // Ensure matrix index limit
+    if (outCol < 0) outCol = 0;
     if (outCol >= cols) outCol = cols - 1;
+    if (outRow < 0) outRow = 0;
     if (outRow >= rows) outRow = rows - 1;
 
     return true;

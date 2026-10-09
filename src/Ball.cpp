@@ -14,6 +14,9 @@ void Ball::setPosition(Position newPos) {pos = newPos;}
 float Ball::getSpeed() const {return speed;}
 void Ball::setSpeed(float newSpeed) {speed = newSpeed;}
 
+int Ball::getDirection() const {return direction;}
+
+
 void Ball::kicked(int kickDirection, float initialSpeed) {
     direction = (kickDirection % 360 + 360) % 360;// Normalize direction to 0-359
     speed = initialSpeed;

@@ -11,7 +11,7 @@ protected:
 
 public:
     // Constructor for the Robot class
-    Robot(float startspeed, int startOrientation, Position startPos);
+    Robot(Position startPos, int startOrientation, float startspeed);
 
     virtual ~Robot() = default;
 

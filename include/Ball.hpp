@@ -17,8 +17,9 @@ public:
 
     float getSpeed() const;
     void setSpeed(float newSpeed);
+    int getDirection() const;
 
-    // Method when ball kicked by striker
+    // Method when ball kicked by striker() const;
     void kicked(int kickDirection, float initialSpeed = 3.0f);
 
     // Method update per-tick

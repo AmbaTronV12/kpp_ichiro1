@@ -7,10 +7,12 @@
 class Striker : public Robot {
 private:
     State currentState; // Current state of the striker
+    Position lastKnownballPos;
+    bool  ballDetected;
 
 public:
     // Constructor for the Striker class
-    Striker(Position startPos, float startspeed, int startOrientation);
+    Striker(Position startPos, int startOrientation, float startSpeed);
 
     // Getter and setter for currentState
     State getCurrentState() const;
