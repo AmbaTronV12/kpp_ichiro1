@@ -1,0 +1,9 @@
+# Konfigurasi simulasi (koordinat dalam meter, otomatis dibulatkan ke pusat petak)
+# Pusat petak: ..., -0.75, -0.25, 0.25, 0.75, ...
+striker_x = -3.75
+striker_y = -1.25
+striker_heading = 0     # 0=Timur, 90=Utara, 180=Barat, 270=Selatan
+ball_x = 0.25
+ball_y = 0.75
+max_ticks = 300
+step_mode = 0           # 1 = tekan Enter tiap tick
