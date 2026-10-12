@@ -1,0 +1,5 @@
+# Demo 4: error, striker dan bola di petak yang sama
+striker_x = 0.25
+striker_y = 0.25
+ball_x = 0.25
+ball_y = 0.25

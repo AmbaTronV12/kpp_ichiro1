@@ -38,6 +38,7 @@ void Simulator::run(bool stepMode, int tickDelayMs) {
     else std::cout << "Waktu habis (" << maxTicks_ << " tick). Belum berhasil mencetak gol.\n";
 }
 
+// Jantung program
 bool Simulator::tick() {
     ++tick_;
     // 1. SENSE

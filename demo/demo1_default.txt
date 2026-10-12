@@ -1,0 +1,8 @@
+# Demo 1: skenario default, pencarian penuh sampai gol
+striker_x = -3.75
+striker_y = -1.25
+striker_heading = 0
+ball_x = 0.25
+ball_y = 0.75
+max_ticks = 300
+tick_delay_ms = 300

@@ -39,9 +39,7 @@ struct Vec2 {
     Vec2 operator*(double s) const { return {x * s, y * s}; }
 };
 
-// ---------------------------------------------------------------------------
 // Modul helper matematika: satu-satunya tempat rumus jarak, bearing, normalisasi.
-// ---------------------------------------------------------------------------
 namespace MathUtils {
 
 inline double toRadians(double deg) { return deg * Const::PI / 180.0; }
@@ -87,9 +85,7 @@ inline Vec2 gridDirection(double deg) {
 
 }  // namespace MathUtils
 
-// ---------------------------------------------------------------------------
 // Aksi yang dikirim Robot ke Simulator (fase Act)
-// ---------------------------------------------------------------------------
 enum class ActionType { WAIT, MOVE_FORWARD, ROTATE, KICK };
 
 struct ActionCmd {

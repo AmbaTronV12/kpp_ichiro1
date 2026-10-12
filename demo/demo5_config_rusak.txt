@@ -1,0 +1,4 @@
+# Demo 5: config rusak (heading bukan kelipatan 90) -> peringatan + default
+striker_heading = 45
+tick_delay_ms = 0
+max_ticks = 5

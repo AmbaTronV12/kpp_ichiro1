@@ -1,0 +1,8 @@
+# Demo 2: bola tepat di depan striker, langsung tendang
+striker_x = -1.25
+striker_y = 0.25
+striker_heading = 0
+ball_x = -0.75
+ball_y = 0.25
+max_ticks = 50
+tick_delay_ms = 700

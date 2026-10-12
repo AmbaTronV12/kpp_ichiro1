@@ -1,0 +1,5 @@
+# Demo 7: batasan model, bola di pojok tidak bisa ditendang
+ball_x = 4.25
+ball_y = 2.75
+max_ticks = 60
+tick_delay_ms = 0
